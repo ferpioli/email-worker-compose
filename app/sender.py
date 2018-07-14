@@ -6,6 +6,7 @@ SQL = 'INSERT INTO emails (assunto, mensagem) VALUES (%s, %s)'
 
 def register_message(assunto, mensagem): 
     conn = psycopg2.connect(DSN)
+    cur = conn.cursor()
     cur.execute(SQL, (assunto, mensagem))
     conn.commit()
     cur.close()
